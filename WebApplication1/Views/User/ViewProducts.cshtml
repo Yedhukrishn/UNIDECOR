@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebApplication1.Models.tbl_Products>
+
+@{
+   
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+<style>
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.child {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
+  height: 100px;
+}
+    </style>
+
+
+
+
+
+        @*<div class="form-group">
+            @Html.Label( " Category", htmlAttributes: new { @class = "control-label col-md-2"  ,style="width:200px"})
+            <div class="col-md-10">
+                @Html.DropDownList("CategoryId", new SelectList(ViewBag.Category, "CategoryId", "Name"), "--Select--", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>*@
+        <div class="child">
+
+            <div class="product-overlay">
+                <div class="overlay-content">
+                    <div style=" margin-left:-90px">
+                        <h3> Categories</h3>
+
+                        @foreach (var item in ViewBag.Category)
+                        {
+                            <a href="@Url.Action("ItemsByCategory", new { categoryID = item.CategoryId })"> <span class="pull-right" style="color:aqua;"></span>@item.Name &nbsp; &nbsp;</a>
+                        }
+                    </div><br />
+                     
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="img">
+                            <a href="@Url.Action("../User/ViewProductDetails", "Admin", new { id = item.ProductId, price = item.Price,Name=item.ProductName })">
+                                <img src="@Url.Content(item.Image)" alt="" align="middle" style="height:200px;width:200px;">
+                            </a>
+                            <div class="desc">
+
+
+                                <a style="text-align:center;font-weight:bold;">@item.ProductName</a>
+                                <br />
+                                <label>M.R.P : </label><label style="color:red;font-size:medium"> ₹ @item.Price</label>
+                                <br />
+                               
+
+                            </div>
+
+                        </div>
+                       
+                    }
+                    
+                </div>
+            </div>
+        </div>

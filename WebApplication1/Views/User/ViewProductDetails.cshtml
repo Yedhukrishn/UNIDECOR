@@ -1,0 +1,120 @@
+﻿@model WebApplication1.Models.tbl_Cart
+
+@{
+    ViewBag.Title = "ViewProductDetails";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+
+
+<style>
+    .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+</style>
+
+<div class="features_items">
+    <!--features_items-->
+    <h2 class="title text-center"> Item Details</h2>
+    <div class="col-sm-6">
+        <div class="w3-content w3-display-container">
+            @foreach (var item in ViewBag.GalleryItems)
+            {
+                <img class="mySlides" src="@Url.Content(@item.Image)" style="width:300px;height:300px;"><br />
+    <label class="mySlides">@item.ProductName</label>
+            }
+            
+        </div>
+        </div>
+  </div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+       
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+
+        
+       
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">,
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control"  } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @{
+                   // int x = Convert.ToInt32(ViewBag.NoOfItems);
+                 int x = 5;
+                }
+                @Html.DropDownListFor(m => m.Quantity, Enumerable.Range(1, @x).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control", Required = "required" })
+
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+       
+     
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add To Cart" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

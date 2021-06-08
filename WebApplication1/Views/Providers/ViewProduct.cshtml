@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication1.Models.tbl_Products>
+
+@{
+    ViewBag.Title = "ViewProduct";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+<h2>ViewProduct</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            Category
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+
+            <td>
+                <img class="mySlides" src="@Url.Content(@item.Image)" style="width:100px;height:100px;"><br />
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Category.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProduct", new { id = item.ProductId }) |
+                @Html.ActionLink("Remove Product", "RemoveProduct", new { id = item.ProductId })
+
+            </td>
+        </tr>
+    }
+
+</table>

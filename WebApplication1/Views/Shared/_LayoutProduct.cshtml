@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="/Content/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="/Content/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="/Content/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="/Content/images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="/Content/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+</head>
+<body>
+    <!--header section start -->
+    <div class="header_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-lg-3">
+                    <div class="logo"><h2 style="font-family:'Times New Roman', Times, serif;font-style:italic;font-size:xx-large;font:bolder">Uni Decors</h2><img src="~/Content/images/Decor.jpg" /></div>
+                </div>
+                <div class="col-sm-4 col-lg-5">
+                    <div class="menu-area">
+                        <nav class="navbar navbar-expand-lg ">
+                            <!-- <a class="navbar-brand" href="#">Menu</a> -->
+                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                   
+                                    <li class="nav-item active">
+                                        @Html.ActionLink("View Product", "ViewProducts", "User", new { @class = "nav-link" })
+
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("View Cart", "Viewcart", "User", new { @class = "nav-link" })
+                                    </li>
+
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Purchase Report", "PurchaseReport", "User", new { @class = "nav-link" })
+                                    </li>
+                                    <li class="nav-item" href="#">
+                                        @Html.ActionLink("Logout", "Logout", "Users", new { @class = "nav-link" })
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-lg-4">
+                    <div class="togle_3">
+                        <div class="left_main">
+                            <div class="menu_main">
+                               
+                            </div>
+                        </div>
+                        <div class="middle_main">
+                        </div>
+                        <div class="right_main">
+                           
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+   
+    <div></div> <div class="layout_padding contact_section">
+    <div class="container">
+        <div class="col-sm-3">
+
+
+
+
+
+        </div>
+        @RenderBody()
+    </div>
+
+</div></body>
+</html>

@@ -1,0 +1,203 @@
+﻿ @model WebApplication1.Models.tbl_Sales
+
+@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+
+
+
+
+    <meta charset="UTF-8">
+    <title>Uni Decors Invoice</title>
+
+    <link href="~/Content/CustomerStyles/bootstrap.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bree Serif', serif;
+        }
+    </style>
+    </head>
+
+    <body>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>
+                        <a href="https://twitter.com/tahirtaous">
+                            <img src="~/Content/HomeStyles/images/home/EFASHION.png" alt="">
+
+                        </a>
+                    </h1>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <h1>INVOICE</h1>
+                    <h1><small>Invoice #EFS-@Model.SalesId</small></h1>
+                </div>
+            </div>
+            <div class="row">
+                @*@if (Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_clothitems.tbl_login.roll_id == 4)
+                    {
+                        <div class="col-xs-5">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>Sold By: <a href="#">@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_DesignOrderSalesDetails.First().tbl_DesignOrders.tbl_clothitems.tbl_login.tbl_designer.First().desname</a></h4>
+
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        <strong>Address:</strong>@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_DesignOrderSalesDetails.First().tbl_DesignOrders.tbl_clothitems.tbl_login.tbl_designer.First().tbl_places.place <br>
+                                        <strong>Phone:</strong>@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_DesignOrderSalesDetails.First().tbl_DesignOrders.tbl_clothitems.tbl_login.tbl_designer.First().phonenumber<br>
+                                        <strong>Email:</strong>@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_DesignOrderSalesDetails.First().tbl_DesignOrders.tbl_clothitems.tbl_login.tbl_designer.First().Email <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    else if (Model.tbl_SalesDeatils.Where(x=>x.SalesMasterID==Model.SaleID).First().tbl_clothitems.tbl_login.roll_id==3)
+                    {
+                        <div class="col-xs-5">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>Sold By: <a href="#">@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_clothitems.tbl_login.tbl_mediator.First().mname</a></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        <strong>Address:</strong>@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_clothitems.tbl_login.tbl_mediator.First().tbl_places.place <br>
+                                        <strong>Phone:</strong>@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_clothitems.tbl_login.tbl_mediator.First().phonenumber<br>
+                                        <strong>Email:</strong>@Model.tbl_SalesDeatils.Where(x => x.SalesMasterID == Model.SaleID).First().tbl_clothitems.tbl_login.tbl_mediator.First().email <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }*@
+
+
+                <div class="col-xs-5 col-xs-offset-7 text-right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Billing To : <a href="#">@Model.tbl_User.Name </a></h4>
+                            <h4>Addres : <a href="#">@Model.tbl_User.Address </a></h4>
+                        </div>
+                        <div class="panel-body">
+                            @*<p>
+                                    <strong>Address:</strong>@Model.tbl_reg.tbl_places.place <br>
+                                    <strong>Phone:</strong>@Model.tbl_reg.phonenumber <br>
+                                    <strong>Email:</strong>@Model.tbl_reg.email <br>
+                                </p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / end client details section -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <h4>Slno</h4>
+                        </th>
+                        <th>
+                            <h4>Description</h4>
+                        </th>
+                        <th>
+                            <h4>Qty</h4>
+                        </th>
+                        <th>
+                            <h4>Rate/Price</h4>
+                        </th>
+                        <th>
+                            <h4>Sub Total</h4>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{int slno = 1;}
+                    @foreach (var item in ViewBag.SalesDetails)
+                    {
+                        <tr>
+                            <td>@slno</td>
+
+                            <td>
+                                <a href="#">@item.tbl_Products.ProductName</a>
+                            </td>
+                            <td class="text-right">
+                                @item.Quantity
+                            </td>
+                            <td class="text-right">
+                                @item.tbl_Products.Price
+                            </td>
+                            <td class="text-right">
+                                @item.TotalAmount
+                            </td>
+                        </tr>
+                        slno++;
+                    }
+                </tbody>
+            </table>
+            <div class="row text-right">
+                <div class="col-xs-2 col-xs-offset-8">
+                    <p>
+                        <strong>
+                            Sub Total : <br>
+                            TAX : <br>
+                            Total : <br>
+                        </strong>
+                    </p>
+                </div>
+                <div class="col-xs-2">
+                    <strong>
+                        ₹ @Model.TotalAmount <br>
+                        N/A <br>
+                        ₹ @Model.TotalAmount <br>
+                    </strong>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-11">
+
+
+                    <button type="button" onclick="PrintDiv();" class="btn btn-info btn-block" id="printbtn">
+                        <i class="fa fa-print"></i>
+                        Print
+                    </button>
+
+                    @*<input type="button" onclick="PrintDiv();" value="Print" class="btn btn-info" id="printbtn" />*@
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <script type="text/javascript">
+
+
+            function PrintDiv() {
+                $("#printbtn").hide();
+
+                window.print();
+                window.location.reload();
+
+            }
+
+        </script>
+
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @*@RenderSection("scripts", required: false)*@

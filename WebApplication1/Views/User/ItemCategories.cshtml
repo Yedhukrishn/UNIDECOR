@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebApplication1.Models.tbl_Category>
+
+
+<div class="brands_products">
+    <!--brands_products-->
+    <h2>Category</h2>
+    <div class="brands-name">
+        <ul class="nav nav-pills nav-stacked">
+            @foreach (var item in Model)
+            {
+                <li><a href="@Url.Action("ItemsByCategory", new { categoryID = item.CategoryId })"> <span class="pull-right"></span>@item.Name</a></li>
+            }
+
+        </ul>
+    </div>
+</div>

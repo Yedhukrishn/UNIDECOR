@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.tbl_Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layoutno.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+
+        <div class="form-group" style="width:600px">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="width:600px">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control",@required="required",@type="password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+   
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="color:aliceblue">
+    <p >@Html.ActionLink("New User", "UserRegistration", "Home", new {})
+&emsp;&emsp;&emsp;&emsp;&emsp;   @Html.ActionLink("New Retailer", "ProviderRegistration") </p>  </div>

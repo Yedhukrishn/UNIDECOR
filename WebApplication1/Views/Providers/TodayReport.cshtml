@@ -1,0 +1,144 @@
+﻿@model IEnumerable<WebApplication1.Models.tbl_Sales>
+
+@{
+    ViewBag.Title = "TodayReport";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+
+<meta charset="UTF-8">
+<title>Sale Report</title>
+
+<link href="~/Content/CustomerStyles/bootstrap.css" rel="stylesheet" />
+@Scripts.Render("~/bundles/modernizr")
+
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: 'Bree Serif', serif;
+    }
+</style>
+    </head>
+
+<body>
+
+
+    <div class="container">
+        
+       
+        <!-- / end client details section -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        <h4>Slno</h4>
+                    </th>
+                    <th>
+                        <h4>Product Name</h4>
+                    </th>
+                    <th>
+                        <h4>Customer</h4>
+                    </th>
+                    <th>
+                        <h4>Quantity</h4>
+                    </th>
+                    <th>
+                        <h4>Total Amount</h4>
+                    </th>
+                    <th>
+                        <h4>Purchasing Date</h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{int slno = 1;}
+                           @foreach (var item in Model) {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SalesId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tbl_Products.ProductName)
+                                </td>
+
+                                <td>
+                                  
+                                    @Html.DisplayFor(modelItem => item.tbl_User.Name)
+
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateDate)
+                                </td>
+                                <td>
+                                </td>
+                               </tr>
+                           }
+</tbody>
+        </table>
+        @*<div class="row text-right">
+            <div class="col-xs-2 col-xs-offset-8">
+                <p>
+                    <strong>
+                        Sub Total : <br>
+                        TAX : <br>
+                        Total : <br>
+                    </strong>
+                </p>
+            </div>
+            <div class="col-xs-2">
+                <strong>
+                    ₹ @Model.TotalAmount <br>
+                    N/A <br>
+                    ₹ @Model.TotalAmount <br>
+                </strong>
+            </div>
+        </div>*@
+
+        <div class="row">
+            <div class="col-md-offset-11">
+
+
+                <button type="button" onclick="PrintDiv();" class="btn btn-info btn-block" id="printbtn">
+                    <i class="fa fa-print"></i>
+                    Print
+                </button>
+
+                @*<input type="button" onclick="PrintDiv();" value="Print" class="btn btn-info" id="printbtn" />*@
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript">
+
+
+            function PrintDiv() {
+                $("#printbtn").hide();
+
+                window.print();
+                window.location.reload();
+
+            }
+
+    </script>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@RenderSection("scripts", required: false)*@

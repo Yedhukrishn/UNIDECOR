@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication1.Models.tbl_Products>
+
+@{
+    ViewBag.Title = "ItemsByCategory";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<<style>
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.child {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
+  height: 100px;
+}
+    </style>
+
+<div class="images_section_2">
+    <div class="parent" >
+        
+        <div class="child" >
+            @foreach (var item in Model)
+            {
+
+                <div class="img">
+                    <a href="@Url.Action("../User/ViewProductDetails", "Admin", new { id = item.ProductId, price = item.Price,Name=item.ProductName })">
+                        <img src="@Url.Content(item.Image)" alt="" align="middle" style="height:200px;width:200px;">
+                    </a>
+                    <div class="desc">
+
+
+                        <a style="text-align:center;font-weight:bold;">@item.ProductName</a>
+                        <br />
+                        <label>M.R.P : </label><label style="color:red;font-size:medium"> ₹ @item.Price</label>
+                        <br />
+                        @*@*  @Html.ActionLink("Book", "SeedBooking", new { id = item.seed_id })*@
+                        @*<a href="@Url.Action("SeedBooking", "farmer", new { id=item.ProductId})" class=" btn btn-success">
+                            Book Now
+                        </a>*@
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

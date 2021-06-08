@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebApplication1.Models.tbl_Providers>
+
+@{
+    ViewBag.Title = "ApproveProvider";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Approve Provider</h2>
+
+@Html.ActionLink("View Providers", "ViewProviders", new { }) |
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProvId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdProof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+      
+      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProvId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdProof)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Approve", "Approve", new { id = item.LogId }) |
+            @Html.ActionLink("Reject", "Reject", new { id = item.LogId }) |
+        </td>
+    </tr>
+}
+
+</table>
